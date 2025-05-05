@@ -7,7 +7,7 @@ export default function AuthForm({ isSignUp = false }) {
   const [form, setForm] = useState({ email: "", password: "", role: "mentee" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { token, loading, error } = useSelector((state) => state.auth);
+  const { loading, error } = useSelector((state) => state.auth);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,12 +22,13 @@ export default function AuthForm({ isSignUp = false }) {
       dispatch(loginRequest({ email: form.email, password: form.password }));
     }
   };
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (token) {
-      navigate("/dashboard");
+    if (token && window.location.pathname !== "/mentee") {
+      navigate("/mentee");
     }
-  }, [token, navigate]);
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">

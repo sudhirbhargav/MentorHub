@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { NavigationSetter } from "./NavigationSetter";
 import AppMentee from "./pages/mentee/appMentee";
+import AppMentors from "./pages/mentors/appMentors";
 
 function App() {
   return (
@@ -30,6 +31,14 @@ function App() {
           element={
             <ProtectedRoute>
               <AppMentee />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/mentor"
+          element={
+            <ProtectedRoute>
+              <AppMentors />
             </ProtectedRoute>
           }
         />

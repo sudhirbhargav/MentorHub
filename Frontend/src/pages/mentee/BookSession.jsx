@@ -34,7 +34,7 @@ export default function BookSession() {
     try {
       setLoading(true);
       const res = await axiosInstance.get(
-        `/mentee/mentors/${mentorId}/availability`
+        `api/mentee/mentors/${mentorId}/availability`
       );
       setAvailability(res.data);
     } catch (err) {
